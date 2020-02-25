@@ -11,14 +11,12 @@ import java.util.Map;
 
 public class HomeSteps extends BaseSteps {
 
-    private HomePage homePage;
+    private HomePage homePage = new HomePage(driver);;
 
     @Given("I open UBS site")
     public void iOpenUBSSite() {
-        openBrowser();
-        homePage = new HomePage(driver);
-        homePage.navigateToHome();
-        homePage.acceptCookiePopUp();
+        homePage.navigateToHome()
+                .acceptCookiePopUp();
     }
 
     @And("I specify below information:$")
@@ -27,16 +25,15 @@ public class HomeSteps extends BaseSteps {
         homePage.selectDocmicile(domicileData.get(0).get("domicile").trim(), domicileData.get(0).get("country").trim());
     }
 
-    @When("I clicked on contact menu")
-    public void iClickedOnContactMenu() {
+    @When("I navigate to contact us from contact menu")
+    public void iNavigateToContactUsFromContactMenu() {
+        homePage.openContactOptions()
+                .selectContactUs();
     }
 
-    @And("I select contact us option from the list")
-    public void iSelectContactUsOptionFromTheList() {
-    }
-
-    @And("I close the browser")
-    public void iCloseTheBrowser() {
-
+    @When("I navigate to login as {string}")
+    public void iNavigateToLoginAs(String userOption) {
+        homePage.openLoginOptions()
+                .chooseLoginOption(userOption);
     }
 }

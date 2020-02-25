@@ -6,10 +6,10 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = {"src/test/resources/features/contact_ubs.feature"},
+        features = {"src/test/resources/features/"},
         plugin = {"pretty", "html:target/cucumber-reports"
                 , "json:target/cucumber-reports/Cucumber.json"
         },
         glue = {"com.ubs.uitests.web"})
-public class UITests {
+public class UITest {
 }
